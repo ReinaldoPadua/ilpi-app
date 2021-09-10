@@ -9,7 +9,7 @@ interface ISutTypes {
 
 const MOCK_INSTITUTIONALIZED_LIST: Array<Institutionalized> = [
   {
-    login: 'mock_login',
+    username: 'mock_login',
     password: 'mock_password',
     name: 'mock institutionalized 1',
     enrollment: '001',
