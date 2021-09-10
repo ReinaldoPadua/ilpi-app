@@ -1,30 +1,10 @@
 import { IInstitutionalizedRepository } from "src/app/infrastructure/protocols/institutionalized-repository";
-import { Institutionalized } from "../../models/institutionalized";
+import { makeInstitutionalizedStub, MOCK_INSTITUTIONALIZED_LIST } from "../__mocks__/institutionalized-repository-stub";
 import { GetInstitutionalizedService } from "./get-institutionalized";
 
 interface ISutTypes {
   sut: GetInstitutionalizedService;
   institutionalizedRepoStub: IInstitutionalizedRepository;
-}
-
-const MOCK_INSTITUTIONALIZED_LIST: Array<Institutionalized> = [
-  {
-    username: 'mock_login',
-    password: 'mock_password',
-    name: 'mock institutionalized 1',
-    enrollment: '001',
-    clinicalHistory: [],
-  }
-];
-
-const makeInstitutionalizedStub = (): IInstitutionalizedRepository => {
-  class InstitutionalizedRepository implements IInstitutionalizedRepository {
-    get(): Array<Institutionalized> {
-      return MOCK_INSTITUTIONALIZED_LIST;
-    }
-  }
-
-  return new InstitutionalizedRepository();
 }
 
 const makeSut = (): ISutTypes => {

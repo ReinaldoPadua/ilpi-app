@@ -9,6 +9,7 @@ interface ISutTypes {
 }
 
 const MOCK_NURSE: Nurse = {
+  id: 'mock_id',
   username: 'mock_login',
   password: 'mock_password',
   name: 'mock nurse name',
