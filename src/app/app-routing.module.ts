@@ -11,8 +11,12 @@ const routes: Routes = [
     loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
   },
   {
+    path: 'vitalSigns',
+    loadChildren: () => import('./presentation/pages/vital-signs-registration/vital-signs-registration-routing.module').then( m => m.VitalSignsRegistrationPageRoutingModule)
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'vitalSigns',
     pathMatch: 'full'
   },
 ];
