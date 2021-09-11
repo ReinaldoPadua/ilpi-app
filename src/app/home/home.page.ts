@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { DataService, Message } from '../services/data.service';
 import { InstitutionalizedRepository } from '../infrastructure/implementations/institutionalized-repository';
+import { IGetInstitutionalizedService } from '../domain/protocols/get-institutionalized';
+import { GetInstitutionalizedService } from '../domain/implementations/get-institutionalized/get-institutionalized';
+import { Institutionalized } from '../domain/models/institutionalized';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,32 +12,15 @@ import { InstitutionalizedRepository } from '../infrastructure/implementations/i
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public messages: any[];
+  public institutionalized: Institutionalized[];
 
   constructor(
-    private data: DataService,
-    private institutionalizedRepository: InstitutionalizedRepository
+    private getInstitutionalizedService: GetInstitutionalizedService
   ) {}
 
   ngOnInit() {
-    console.log('ngOnInit');
-    const response = this.institutionalizedRepository.get();
-    response.subscribe((res) => {
-      console.log(res[0]);
-      this.messages = res;
+    this.getInstitutionalizedService.get().then((data) => {
+      this.institutionalized = data;
     });
-
-    const response2 = this.institutionalizedRepository.findById('togPI6eg7cpZPIqBzFgH');
-    response2.subscribe((res) => {
-      res.name = `velhinho + ${new Date()}`;
-      const response3 = this.institutionalizedRepository.update(res);
-      this.messages.push(response3);
-    });
-  }
-
-  refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 30000);
   }
 }

@@ -27,7 +27,7 @@ describe('Register Vital Signs Service Test Suite', () => {
   it('Should return updated institutionalized with collected vital signs', () => {
     const expected = MOCK_INSTITUTIONALIZED;
     const { sut, institutionalizedRepoStub } = makeSut();
-    spyOn(institutionalizedRepoStub, 'update').and.returnValue(expected);
+    spyOn(institutionalizedRepoStub, 'update').and.returnValue(new Promise(resolve => resolve(expected)));
     const response = sut.register(MOCK_VITAL_SIGNS, expected.id);
     expect(response).toEqual(expected);
   });
@@ -42,7 +42,7 @@ describe('Register Vital Signs Service Test Suite', () => {
 
   it('Should call the findById method from the institutionalized repository with the provided id', () => {
     const { sut, institutionalizedRepoStub } = makeSut();
-    spyOn(institutionalizedRepoStub, 'findById').and.returnValue(MOCK_INSTITUTIONALIZED);
+    spyOn(institutionalizedRepoStub, 'findById').and.returnValue(new Promise(resolve => resolve(MOCK_INSTITUTIONALIZED)));
     sut.register(MOCK_VITAL_SIGNS, 'mock_id');
     expect(institutionalizedRepoStub.findById).toHaveBeenCalledWith('mock_id');
   });
@@ -50,7 +50,7 @@ describe('Register Vital Signs Service Test Suite', () => {
   it('Should call the update method from the repository with the updated institutionalized', () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'update')
-    spyOn(institutionalizedRepoStub, 'findById').and.returnValue({ ...MOCK_INSTITUTIONALIZED });
+    spyOn(institutionalizedRepoStub, 'findById').and.returnValue(new Promise(resolve => resolve({ ...MOCK_INSTITUTIONALIZED })));
     sut.register(MOCK_VITAL_SIGNS, 'mock_id');
     const expected = {
       ...MOCK_INSTITUTIONALIZED,

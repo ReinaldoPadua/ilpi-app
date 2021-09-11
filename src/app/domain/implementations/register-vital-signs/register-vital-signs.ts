@@ -7,8 +7,8 @@ import { IRegisterVitalSignsService } from "../../protocols/register-vital-signs
 export class RegisterVitalSignsService implements IRegisterVitalSignsService {
   constructor(private readonly institutionalizedRepository: IInstitutionalizedRepository) {}
 
-  register(vitalSigns: VitalSigns, institutionalizedId: String): Institutionalized {
-    const institutionalized = this.institutionalizedRepository.findById(institutionalizedId);
+  async register(vitalSigns: VitalSigns, institutionalizedId: String): Promise<Institutionalized> {
+    const institutionalized = await this.institutionalizedRepository.findById(institutionalizedId.toString());
     if (!institutionalized) throw new InstitutionalizedDoesNotExist(institutionalizedId);
     institutionalized.clinicalHistory = [...institutionalized.clinicalHistory, vitalSigns];
     return this.institutionalizedRepository.update(institutionalized);

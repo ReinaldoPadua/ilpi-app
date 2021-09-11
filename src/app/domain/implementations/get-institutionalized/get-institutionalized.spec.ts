@@ -14,10 +14,10 @@ const makeSut = (): ISutTypes => {
 };
 
 describe('Get Institutionalized Service Test Suite', () => {
-  it('Should return all institutionalized from repository', () => {
+  it('Should return all institutionalized from repository', async () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     const expected = MOCK_INSTITUTIONALIZED_LIST;
-    spyOn(institutionalizedRepoStub, 'get').and.returnValue(expected);
+    spyOn(institutionalizedRepoStub, 'get').and.returnValue(new Promise(resolve => resolve(expected)));
     const response = sut.get();
     expect(response).toEqual(expected);
   });

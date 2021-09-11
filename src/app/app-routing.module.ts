@@ -15,8 +15,12 @@ const routes: Routes = [
     loadChildren: () => import('./presentation/pages/vital-signs-registration/vital-signs-registration-routing.module').then( m => m.VitalSignsRegistrationPageRoutingModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./presentation/pages/login/login-routing.module').then( m => m.LoginPageRoutingModule)
+  },
+  {
     path: '',
-    redirectTo: 'vitalSigns',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 ];

@@ -14,16 +14,20 @@ export const MOCK_INSTITUTIONALIZED_LIST: Array<Institutionalized> = [MOCK_INSTI
 
 export const makeInstitutionalizedStub = (): IInstitutionalizedRepository => {
   class InstitutionalizedRepository implements IInstitutionalizedRepository {
-    get(): Array<Institutionalized> {
-      return MOCK_INSTITUTIONALIZED_LIST;
+    get(): Promise<Institutionalized[]> {
+      return new Promise(resolve => resolve(MOCK_INSTITUTIONALIZED_LIST));
     }
 
-    findById(id: String): Institutionalized {
-      return { ...MOCK_INSTITUTIONALIZED, id } ;
+    async findById(id: String): Promise<Institutionalized> {
+      return new Promise(resolve => resolve({ ...MOCK_INSTITUTIONALIZED, id: id.toString() }));
     }
 
-    update(institutionalized: Institutionalized): Institutionalized {
-      return institutionalized;
+    async update(institutionalized: Institutionalized): Promise<Institutionalized> {
+      return new Promise(resolve => resolve(institutionalized));
+    }
+
+    async save(institutionalized: Institutionalized): Promise<Institutionalized> {
+      return new Promise(resolve => resolve(institutionalized));
     }
   }
 
