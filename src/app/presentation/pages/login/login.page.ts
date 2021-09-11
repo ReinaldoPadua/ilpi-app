@@ -1,6 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginService } from 'src/app/domain/implementations/login/login';
-import { ILoginService, I_LOGIN_SERVICE } from 'src/app/domain/protocols/login';
 
 @Component({
   selector: 'app-login',
