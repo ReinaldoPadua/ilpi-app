@@ -9,20 +9,20 @@ export interface Message {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-  public messages: Message[] = [
+  public messages: any[] = [
     {
       fromName: 'Sr. Fulano',
       subject: 'Nova notificação: Hora do medicamento.',
       date: '9:32 AM',
       id: 0,
-      read: false
-    }
+      read: false,
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   public getMessages(): Message[] {
     return this.messages;

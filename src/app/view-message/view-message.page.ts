@@ -9,11 +9,9 @@ import { DataService, Message } from '../services/data.service';
 })
 export class ViewMessagePage implements OnInit {
   public message: Message;
+  public list: any;
 
-  constructor(
-    private data: DataService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor(private data: DataService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
