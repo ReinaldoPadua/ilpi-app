@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from 'src/app/domain/implementations/login/login';
+import { ILoginService } from 'src/app/domain/protocols/login';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoginService } from 'src/app/domain/implementations/login/login';
 export class LoginPage {
   user: {}
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: ILoginService) {}
 
   async login() {
     try {

@@ -1,8 +1,8 @@
 import { Institutionalized } from '../../domain/models/institutionalized';
 
-export interface IInstitutionalizedRepository {
-  get(): Promise<Institutionalized[]>;
-  findById(id: string): Promise<Institutionalized>;
-  save(institutionalized: Institutionalized): Promise<Institutionalized>;
-  update(institutionalized: Institutionalized): Promise<Institutionalized>;
+export abstract class IInstitutionalizedRepository {
+  get(): Promise<Institutionalized[]> { return; };
+  findById(id: string): Promise<Institutionalized> { return; };
+  save(institutionalized: Institutionalized): Promise<Institutionalized> { return; };
+  update(institutionalized: Institutionalized): Promise<Institutionalized> { return; };
 }

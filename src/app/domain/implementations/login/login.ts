@@ -9,7 +9,7 @@ import { ILoginService } from "../../protocols/login";
   providedIn: 'root'
 })
 export class LoginService implements ILoginService {
-  constructor(private nurseRepository: NurseRepository) {}
+  constructor(private nurseRepository: INurseRepository) {}
 
   login(username: String, password: String): Promise<Nurse> {
     const nurse = this.nurseRepository.findByUsernameAndPassword(username, password);

@@ -9,7 +9,7 @@ import { IGetInstitutionalizedService } from "../../protocols/get-institutionali
   providedIn: 'root',
 })
 export class GetInstitutionalizedService implements IGetInstitutionalizedService {
-  constructor(private institutionalizedRepository: InstitutionalizedRepository) {}
+  constructor(private institutionalizedRepository: IInstitutionalizedRepository) {}
 
   get(): Promise<Institutionalized[]> {
     return this.institutionalizedRepository.get();

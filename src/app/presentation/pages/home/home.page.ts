@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { IGetInstitutionalizedService } from 'src/app/domain/protocols/get-institutionalized';
 import { GetInstitutionalizedService } from '../../../domain/implementations/get-institutionalized/get-institutionalized';
 import { Institutionalized } from '../../../domain/models/institutionalized';
 
@@ -11,7 +12,7 @@ export class HomePage implements OnInit {
   public institutionalized: Institutionalized[];
 
   constructor(
-    private getInstitutionalizedService: GetInstitutionalizedService
+    private getInstitutionalizedService: IGetInstitutionalizedService
   ) {}
 
   ngOnInit() {
