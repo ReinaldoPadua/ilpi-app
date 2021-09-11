@@ -1,7 +1,7 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Institutionalized } from '../../domain/models/institutionalized';
 import { IInstitutionalizedRepository } from '../protocols/institutionalized-repository';
-import { Injectable, InjectionToken } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',

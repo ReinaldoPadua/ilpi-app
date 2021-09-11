@@ -1,4 +1,3 @@
-import { InjectionToken } from '@angular/core';
 import { Nurse } from "../models/nurse";
 
 export abstract class ILoginService {

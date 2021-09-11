@@ -1,6 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { InstitutionalizedRepository } from "src/app/infrastructure/implementations/institutionalized-repository";
 import { IInstitutionalizedRepository } from "../../../infrastructure/protocols/institutionalized-repository";
 import { Institutionalized } from "../../models/institutionalized";
 import { IGetInstitutionalizedService } from "../../protocols/get-institutionalized";

@@ -7,16 +7,13 @@ import { INurseRepository } from '../protocols/nurse-repository';
     providedIn: 'root'
 })
 export class NurseRepository implements INurseRepository {
-    private usersCollection: AngularFirestoreCollection<Nurse>
 
-    constructor(private db: AngularFirestore) {
-        this.usersCollection = this.db.collection<Nurse>('users')
-    }
+  constructor(private db: AngularFirestore) { }
 
-    async findByUsernameAndPassword(username: String, password: String): Promise<Nurse | undefined> {
-      const users = await this.db.collection<Nurse>('users', ref => ref.where("username", "==", username)).get().toPromise();
-      const user = users.docs.filter(x => x.data().password == password);
-      return (user && user.length > 0) ? user[0].data() : undefined;
-    }
+  async findByUsernameAndPassword(username: String, password: String): Promise<Nurse | undefined> {
+    const users = await this.db.collection<Nurse>('users', ref => ref.where("username", "==", username)).get().toPromise();
+    const user = users.docs.filter(x => x.data().password == password);
+    return (user && user.length > 0) ? user[0].data() : undefined;
+  }
 
 }
