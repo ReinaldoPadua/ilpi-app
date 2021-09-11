@@ -18,7 +18,7 @@ describe('Get Institutionalized Service Test Suite', () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     const expected = MOCK_INSTITUTIONALIZED_LIST;
     spyOn(institutionalizedRepoStub, 'get').and.returnValue(new Promise(resolve => resolve(expected)));
-    const response = sut.get();
+    const response = await sut.get();
     expect(response).toEqual(expected);
   });
 

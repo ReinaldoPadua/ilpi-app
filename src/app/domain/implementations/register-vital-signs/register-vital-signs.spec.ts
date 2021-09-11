@@ -24,34 +24,34 @@ const makeSut = (): ISutTypes => {
 }
 
 describe('Register Vital Signs Service Test Suite', () => {
-  it('Should return updated institutionalized with collected vital signs', () => {
+  it('Should return updated institutionalized with collected vital signs', async () => {
     const expected = MOCK_INSTITUTIONALIZED;
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'update').and.returnValue(new Promise(resolve => resolve(expected)));
-    const response = sut.register(MOCK_VITAL_SIGNS, expected.id);
+    const response = await sut.register(MOCK_VITAL_SIGNS, expected.id);
     expect(response).toEqual(expected);
   });
 
-  it('Should return custom error if provided institutionalized does not exist', () => {
+  it('Should return custom error if provided institutionalized does not exist', async () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'findById').and.returnValue(null);
-    expect(() => { sut.register(MOCK_VITAL_SIGNS, 'mock_id') }).toThrow(
+    await expectAsync(sut.register(MOCK_VITAL_SIGNS, 'mock_id')).toBeRejectedWith(
       new InstitutionalizedDoesNotExist('mock_id')
     );
   });
 
-  it('Should call the findById method from the institutionalized repository with the provided id', () => {
+  it('Should call the findById method from the institutionalized repository with the provided id', async () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'findById').and.returnValue(new Promise(resolve => resolve(MOCK_INSTITUTIONALIZED)));
-    sut.register(MOCK_VITAL_SIGNS, 'mock_id');
+    await sut.register(MOCK_VITAL_SIGNS, 'mock_id');
     expect(institutionalizedRepoStub.findById).toHaveBeenCalledWith('mock_id');
   });
 
-  it('Should call the update method from the repository with the updated institutionalized', () => {
+  it('Should call the update method from the repository with the updated institutionalized', async () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'update')
     spyOn(institutionalizedRepoStub, 'findById').and.returnValue(new Promise(resolve => resolve({ ...MOCK_INSTITUTIONALIZED })));
-    sut.register(MOCK_VITAL_SIGNS, 'mock_id');
+    await sut.register(MOCK_VITAL_SIGNS, 'mock_id');
     const expected = {
       ...MOCK_INSTITUTIONALIZED,
       clinicalHistory: [...MOCK_INSTITUTIONALIZED.clinicalHistory, MOCK_VITAL_SIGNS],

@@ -33,11 +33,11 @@ const makeSut = (): ISutTypes => {
 };
 
 describe('Login Service Test Suite', () => {
-  it('Should return existing nurse', () => {
+  it('Should return existing nurse', async () => {
     const { sut, nurseRepositoryStub } = makeSut();
     const expected = MOCK_NURSE;
     spyOn(nurseRepositoryStub, 'findByUsernameAndPassword').and.returnValue(new Promise(resolve => resolve(expected)));
-    const response = sut.login('mock_username', 'mock_password');
+    const response = await sut.login('mock_username', 'mock_password');
     expect(response).toEqual(expected);
   });
 
