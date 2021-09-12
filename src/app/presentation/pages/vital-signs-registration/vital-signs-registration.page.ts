@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { VitalSigns } from 'src/app/domain/models/vital-signs';
 import { IRegisterVitalSignsService } from 'src/app/domain/protocols/register-vital-signs';
 
 /*
   To-do:
-    - [ ] Receber ID do institucionalizado escolhido na tela anterior e armazenar na variável "institutionalizedId"
-        // const id = this.activatedRoute.snapshot.paramMap.get('id');
+    - [X] Receber ID do institucionalizado escolhido na tela anterior e armazenar na variável "institutionalizedId"
     - [ ] Campos do formulário devem espelhar/interagir com objeto "vitalSigns" da VitalSignsRegistrationPage
     - [ ] Função "register()" deve usar os dados do objeto "vitalSigns" (valores do formulário dos sinais vitais)
     - [ ] Criar feedback/alert/diálogo para informar que algum valor está inválido (somente números)
@@ -18,7 +18,7 @@ import { IRegisterVitalSignsService } from 'src/app/domain/protocols/register-vi
   templateUrl: 'vital-signs-registration.page.html',
   styleUrls: ['vital-signs-registration.page.scss'],
 })
-export class VitalSignsRegistrationPage {
+export class VitalSignsRegistrationPage implements OnInit {
 
   institutionalizedId: String = '';
 
@@ -31,8 +31,13 @@ export class VitalSignsRegistrationPage {
   };
 
   constructor(
-    private readonly registerService: IRegisterVitalSignsService
+    private readonly registerService: IRegisterVitalSignsService,
+    private activatedRoute: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    this.institutionalizedId = this.activatedRoute.snapshot.paramMap.get('id');
+  }
 
   register() {
     this.registerService.register(this.vitalSigns, this.institutionalizedId);
