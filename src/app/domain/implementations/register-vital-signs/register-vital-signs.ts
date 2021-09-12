@@ -1,9 +1,13 @@
+import { Injectable } from "@angular/core";
 import { IInstitutionalizedRepository } from "../../../infrastructure/protocols/institutionalized-repository";
 import { InstitutionalizedDoesNotExist } from "../../errors/institutionalized-does-not-exist";
 import { Institutionalized } from "../../models/institutionalized";
 import { VitalSigns } from "../../models/vital-signs";
 import { IRegisterVitalSignsService } from "../../protocols/register-vital-signs";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class RegisterVitalSignsService implements IRegisterVitalSignsService {
   constructor(private readonly institutionalizedRepository: IInstitutionalizedRepository) {}
 

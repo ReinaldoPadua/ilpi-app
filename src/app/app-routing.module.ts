@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./presentation/pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'vitalSigns',
+    path: 'vitalSigns/:id',
     loadChildren: () => import('./presentation/pages/vital-signs-registration/vital-signs-registration-routing.module').then( m => m.VitalSignsRegistrationPageRoutingModule)
   },
   {

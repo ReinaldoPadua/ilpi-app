@@ -19,6 +19,8 @@ import { NurseRepository } from './infrastructure/implementations/nurseRepositor
 import { INurseRepository } from './infrastructure/protocols/nurse-repository';
 import { LoginService } from './domain/implementations/login/login';
 import { ILoginService } from './domain/protocols/login';
+import { RegisterVitalSignsService } from './domain/implementations/register-vital-signs/register-vital-signs';
+import { IRegisterVitalSignsService } from './domain/protocols/register-vital-signs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,10 +32,11 @@ import { ILoginService } from './domain/protocols/login';
   ],
   providers: [
     AngularFirestore,
-    { provide: IGetInstitutionalizedService, useClass: GetInstitutionalizedService },
     { provide: IInstitutionalizedRepository, useClass: InstitutionalizedRepository },
     { provide: INurseRepository, useClass: NurseRepository },
     { provide: ILoginService, useClass: LoginService },
+    { provide: IRegisterVitalSignsService, useClass: RegisterVitalSignsService },
+    { provide: IGetInstitutionalizedService, useClass: GetInstitutionalizedService },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

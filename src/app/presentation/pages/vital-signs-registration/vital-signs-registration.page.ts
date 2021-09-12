@@ -5,6 +5,7 @@ import { IRegisterVitalSignsService } from 'src/app/domain/protocols/register-vi
 /*
   To-do:
     - [ ] Receber ID do institucionalizado escolhido na tela anterior e armazenar na variável "institutionalizedId"
+        // const id = this.activatedRoute.snapshot.paramMap.get('id');
     - [ ] Campos do formulário devem espelhar/interagir com objeto "vitalSigns" da VitalSignsRegistrationPage
     - [ ] Função "register()" deve usar os dados do objeto "vitalSigns" (valores do formulário dos sinais vitais)
     - [ ] Criar feedback/alert/diálogo para informar que algum valor está inválido (somente números)
