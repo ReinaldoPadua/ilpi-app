@@ -38,6 +38,7 @@ export class LoginPage {
       this.isLoading = true;
       const user = await this.loginService.login(username, password);
       if (!user) throw new NurseDoesNotExist();
+      sessionStorage.setItem('ilpiAppLoggedUser', username);
       this.router.navigate(['/home'])
       this.isLoading = false;
     } catch (ex: any) {

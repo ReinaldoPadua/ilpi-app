@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VitalSigns } from 'src/app/domain/models/vital-signs';
 import { IRegisterVitalSignsService } from 'src/app/domain/protocols/register-vital-signs';
 
@@ -32,11 +32,14 @@ export class VitalSignsRegistrationPage implements OnInit {
 
   constructor(
     private readonly registerService: IRegisterVitalSignsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit() {
     this.institutionalizedId = this.activatedRoute.snapshot.paramMap.get('id');
+    const user = sessionStorage.getItem('ilpiAppLoggedUser');
+    if (!user || user === "" || user === null) this.router.navigate(['/login']);
   }
 
   register() {

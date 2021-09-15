@@ -5,15 +5,20 @@ import { FormsModule } from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { LoaderComponent } from './../../components/loader/loader.component';
+import { LoaderComponentModule } from './../../components/loader/loader.module';
+import { AlertComponentModule } from './../../components/alert/alert.module';
+import { LogoffBtnComponentModule } from './../../components/logoff-btn/logoff-btn.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    LoaderComponentModule,
+    AlertComponentModule,
+    LogoffBtnComponentModule
   ],
-  declarations: [HomePage, LoaderComponent],
+  declarations: [HomePage],
 })
 export class HomePageModule {}

@@ -24,10 +24,12 @@ export class HomePage implements OnInit {
 
   constructor(
     private getInstitutionalizedService: IGetInstitutionalizedService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
+    const user = sessionStorage.getItem('ilpiAppLoggedUser');
+    if (!user || user === "" || user === null) this.router.navigate(['/login']);
     this.getInstitutionalizedService.get().then((data) => {
       this.institutionalized = data;
       this.isLoading = false;

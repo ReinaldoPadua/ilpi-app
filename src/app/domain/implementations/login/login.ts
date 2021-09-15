@@ -10,8 +10,8 @@ import { ILoginService } from "../../protocols/login";
 export class LoginService implements ILoginService {
   constructor(private nurseRepository: INurseRepository) {}
 
-  login(username: String, password: String): Promise<Nurse> {
-    const nurse = this.nurseRepository.findByUsernameAndPassword(username, password);
+  async login(username: String, password: String): Promise<Nurse> {
+    const nurse = await this.nurseRepository.findByUsernameAndPassword(username, password);
     if (!nurse) throw new NurseDoesNotExist();
     return nurse;
   }

@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginPage } from './login.page';
 import { LoginPageRoutingModule } from './login-routing.module';
-import { LoaderComponent } from './../../components/loader/loader.component';
-import { AlertComponent } from './../../components/alert/alert.component';
+import { LoaderComponentModule } from './../../components/loader/loader.module';
+import { AlertComponentModule } from './../../components/alert/alert.module';
 
 @NgModule({
   imports: [
@@ -14,9 +14,11 @@ import { AlertComponent } from './../../components/alert/alert.component';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoaderComponentModule,
+    AlertComponentModule
   ],
   exports: [LoginPage],
-  declarations: [LoginPage, LoaderComponent, AlertComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}
