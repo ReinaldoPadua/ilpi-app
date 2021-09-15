@@ -1,5 +1,5 @@
 import { Institutionalized } from "../models/institutionalized";
 
-export interface IGetInstitutionalizedService {
-  get(): Array<Institutionalized>;
+export abstract class IGetInstitutionalizedService {
+  get(): Promise<Institutionalized[]> { return; };
 }

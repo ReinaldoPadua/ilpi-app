@@ -1,9 +1,8 @@
 import { Institutionalized } from '../../domain/models/institutionalized';
-import { Observable } from 'rxjs';
 
-export interface IInstitutionalizedRepository {
-  get(): Observable<Institutionalized[]>;
-  findById(id: string): Observable<Institutionalized>;
-  save(institutionalized: Institutionalized): Promise<Institutionalized>;
-  update(institutionalized: Institutionalized): Institutionalized;
+export abstract class IInstitutionalizedRepository {
+  get(): Promise<Institutionalized[]> { return; };
+  findById(id: string): Promise<Institutionalized> { return; };
+  save(institutionalized: Institutionalized): Promise<Institutionalized> { return; };
+  update(institutionalized: Institutionalized): Promise<Institutionalized> { return; };
 }

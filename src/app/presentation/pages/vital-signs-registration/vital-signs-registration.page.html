@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <logoff-btn></logoff-btn>
+      Smart Vital Signs - Coleta de sinais vitais
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Coleta de sinais vitais
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form class="vital-signs-forms">
+    <ion-item>
+      <ion-label position="floating">Saturação:</ion-label>
+      <ion-input type="number" [value]="vitalSigns.saturation" name="saturation"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Pressão arterial:</ion-label>
+      <ion-input type="number" [value]="vitalSigns.bloodPressure" name="bloodPressure"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frequência cardíaca:</ion-label>
+      <ion-input type="number" [value]="vitalSigns.heartRate" name="heartRate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Frequência respiratória:</ion-label>
+      <ion-input type="number" [value]="vitalSigns.respiratoryFrequency" name="respiratoryFrequency"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Temperatura corporal:</ion-label>
+      <ion-input type="number" [value]="vitalSigns.bodyTemperature" name="bodyTemperature"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button slot="end" size="default" color="danger" fill="outline" (click)="back()">
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+        Voltar
+      </ion-button>
+      <ion-button slot="end" size="default" (click)="logForm()">
+        <ion-icon name="checkmark-outline" slot="end"></ion-icon>
+        Registrar
+      </ion-button>
+    </ion-item>
+  </form>
+
+</ion-content>

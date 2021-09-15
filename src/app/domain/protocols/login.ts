@@ -1,5 +1,5 @@
 import { Nurse } from "../models/nurse";
 
-export interface ILoginService {
-  login(username: String, password: String): Nurse;
+export abstract class ILoginService {
+  login(username: String, password: String): Promise<Nurse> { return; };
 }

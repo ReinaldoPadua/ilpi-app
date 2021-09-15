@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MessageComponent } from './message.component';
+import { LogoffBtnComponent } from './logoff-btn.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, IonicModule, RouterModule],
-  declarations: [MessageComponent],
-  exports: [MessageComponent]
+  declarations: [LogoffBtnComponent],
+  exports: [LogoffBtnComponent]
 })
-export class MessageComponentModule {}
+export class LogoffBtnComponentModule {}
