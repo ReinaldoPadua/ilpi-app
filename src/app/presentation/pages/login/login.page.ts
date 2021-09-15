@@ -1,17 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { NurseDoesNotExist } from 'src/app/domain/errors/nurse-does-not-exist';
-import { Nurse } from 'src/app/domain/models/nurse';
 import { ILoginService } from 'src/app/domain/protocols/login';
-
-/*
-  To-do:
-    - [ ] Campos do formulário devem espelhar/interagir com propriedade "user" da LoginPage
-    - [ ] Função "login()" deve usar o username e password da propriedade "user" (valores do formulário de login)
-    - [X] Criar feedback/alert/diálogo de login/senha incorretos
-    - [X] Criar feedback/alert/diálogo de carregamento, enquanto busca o login
-    - [X] Se login/senha corretos, redirecionar para "/home"
-*/
 
 interface CustomMessage {
   message: string;
@@ -26,7 +17,11 @@ export class LoginPage {
 
   isLoading: boolean = false;
   error?: CustomMessage = undefined;
-  user: Nurse = {} as Nurse
+
+  loginData = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
 
   constructor(
     private loginService: ILoginService,
@@ -38,9 +33,10 @@ export class LoginPage {
   }
 
   async login() {
+    const { username, password } = this.loginData.value;
     try {
       this.isLoading = true;
-      const user = await this.loginService.login('teste', 'teste');
+      const user = await this.loginService.login(username, password);
       if (!user) throw new NurseDoesNotExist();
       this.router.navigate(['/home'])
       this.isLoading = false;

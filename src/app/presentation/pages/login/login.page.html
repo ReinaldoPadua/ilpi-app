@@ -18,14 +18,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <form class="login-forms" *ngIf="!isLoading">
+  <form class="login-forms" *ngIf="!isLoading" [formGroup]="loginData">
     <ion-item>
       <ion-label position="floating">Nome de usuário:</ion-label>
-      <ion-input type="text" [value]="user.username" name="username"></ion-input>
+      <ion-input type="text" formControlName="username" name="username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Senha:</ion-label>
-      <ion-input type="text" [value]="user.password" name="password"></ion-input>
+      <ion-input type="text" formControlName="password" name="password"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
