@@ -7,6 +7,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <loader *ngIf="isLoading"></loader>
+  <alert message="{{ error.message }}" (onClose)="closeAlert()" *ngIf="!!error"></alert>
 
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -16,7 +18,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <form class="login-forms">
+  <form class="login-forms" *ngIf="!isLoading">
     <ion-item>
       <ion-label position="floating">Nome de usuário:</ion-label>
       <ion-input type="text" [value]="user.username" name="username"></ion-input>
@@ -33,5 +35,7 @@
       </ion-button>
     </ion-item>
   </form>
+
+
 
 </ion-content>

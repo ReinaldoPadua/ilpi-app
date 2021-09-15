@@ -8,11 +8,11 @@ const routes: Routes = [
   },
   {
     path: 'vitalSigns/:id',
-    loadChildren: () => import('./presentation/pages/vital-signs-registration/vital-signs-registration-routing.module').then( m => m.VitalSignsRegistrationPageRoutingModule)
+    loadChildren: () => import('./presentation/pages/vital-signs-registration/vital-signs-registration.module').then( m => m.VitalSignsRegistrationPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./presentation/pages/login/login-routing.module').then( m => m.LoginPageRoutingModule)
+    loadChildren: () => import('./presentation/pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: '',

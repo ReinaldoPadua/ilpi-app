@@ -13,8 +13,5 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [
-    InstitutionalizedRepository, // seu provider aqui
-  ],
 })
 export class HomePageRoutingModule {}

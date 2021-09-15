@@ -7,10 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="loading-wrapper" *ngIf="loading">
-    <div class="fake-icon"><ion-icon name="refresh-outline"></ion-icon></div>
-    <div>Carregando...</div>
-  </div>
+  <loader *ngIf="isLoading"></loader>
 
   <ion-list class="institutionalized-list">
     <ion-item *ngFor="let in of institutionalized">
@@ -20,7 +17,7 @@
       </ion-button>
     </ion-item>
 
-    <ion-item *ngIf="(!institutionalized || institutionalized.length === 0) && !loading">
+    <ion-item *ngIf="(!institutionalized || institutionalized.length === 0) && !isLoading">
       <ion-label>Nenhum institucionalizado cadastrado</ion-label>
     </ion-item>
   </ion-list>

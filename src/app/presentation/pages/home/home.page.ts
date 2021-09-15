@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     - [X] Criar um layout para esta tela: Apresentar lista com todos os institucionalizados retornados em "this.getInstitutionalizedService.get()"
     - [X] Cada institucionalizado (da lista de institucionalizados) deverá ter um botão para "interagir" ("vou coletar os sinais vitais deste aqui")
       - Ao clicar neste botão, chamar a função do TODO abaixo
-    - [ ] Criar função para redirecionar para "/vitalSigns", enviando o ID do institucionalizado escolhido
+    - [X] Criar função para redirecionar para "/vitalSigns", enviando o ID do institucionalizado escolhido
 */
 
 @Component({
@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  loading: boolean = true;
+  isLoading: boolean = true;
   institutionalized: Institutionalized[] = [];
 
   constructor(
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.getInstitutionalizedService.get().then((data) => {
       this.institutionalized = data;
-      this.loading = false;
+      this.isLoading = false;
     });
   }
 

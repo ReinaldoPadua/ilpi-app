@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginPage } from './login.page';
 import { LoginPageRoutingModule } from './login-routing.module';
+import { LoaderComponent } from './../../components/loader/loader.component';
+import { AlertComponent } from './../../components/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -13,6 +15,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
     IonicModule,
     LoginPageRoutingModule
   ],
-  declarations: [LoginPage]
+  exports: [LoginPage],
+  declarations: [LoginPage, LoaderComponent, AlertComponent]
 })
 export class LoginPageModule {}
