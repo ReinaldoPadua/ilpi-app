@@ -9,25 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
-  isLoading: boolean = true;
+  isLoading = true;
   institutionalized: Institutionalized[] = [];
 
   constructor(
     private getInstitutionalizedService: IGetInstitutionalizedService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
     const user = sessionStorage.getItem('ilpiAppLoggedUser');
-    if (!user || user === "" || user === null) this.router.navigate(['/login']);
+    if (!user || user === '' || user === null) {
+      this.router.navigate(['/login']);
+    }
     this.getInstitutionalizedService.get().then((data) => {
+      console.log(data);
       this.institutionalized = data;
       this.isLoading = false;
     });
   }
 
-  selectInstitutionalized(id: String) {
-    this.router.navigate(['/vitalSigns/' + id])
+  selectInstitutionalized(id: string) {
+    this.router.navigate(['/vitalSigns/' + id]);
   }
 }

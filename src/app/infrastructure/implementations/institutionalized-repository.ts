@@ -15,11 +15,22 @@ export class InstitutionalizedRepository implements IInstitutionalizedRepository
 
   async get(): Promise<Institutionalized[]> {
     const institutionalizeds = await this.institutionalizedCollection.get().toPromise();
-    return institutionalizeds.docs.map(x => x.data()) as Institutionalized[];
+    return institutionalizeds.docs.map((doc) => ({
+      id: doc.id,
+      name: doc.data().name,
+      enrollment: doc.data().enrollment,
+    })) as Institutionalized[];
   }
 
   async findById(id: string): Promise<Institutionalized> {
-    return this.institutionalizedCollection.doc(id).valueChanges({ idField: 'id' }).toPromise();
+    const doc = await this.institutionalizedCollection.doc(id).get().toPromise();
+
+    return {
+      id,
+      name: doc.data().name,
+      enrollment: doc.data().enrollment,
+      clinicalHistory: doc.data().clinicalHistory,
+    } as Institutionalized;
   }
 
   async save(institutionalized: Institutionalized): Promise<Institutionalized> {
@@ -33,7 +44,7 @@ export class InstitutionalizedRepository implements IInstitutionalizedRepository
     return institutionalized;
   }
 
-  private async create(institutionalized: Institutionalized): Promise<String> {
+  private async create(institutionalized: Institutionalized): Promise<string> {
     return (await this.institutionalizedCollection.add(institutionalized)).id;
   }
 }
