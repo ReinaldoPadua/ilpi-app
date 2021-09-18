@@ -1,4 +1,9 @@
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+
 import { IInstitutionalizedRepository } from "src/app/infrastructure/protocols/institutionalized-repository";
+import { VitalSignsRegistrationPage } from 'src/app/presentation/pages/vital-signs-registration/vital-signs-registration.page';
 import { InstitutionalizedDoesNotExist } from "../../errors/institutionalized-does-not-exist";
 import { VitalSigns } from "../../models/vital-signs";
 import { makeInstitutionalizedStub, MOCK_INSTITUTIONALIZED } from "../__mocks__/institutionalized-repository-stub";
@@ -24,6 +29,27 @@ const makeSut = (): ISutTypes => {
 }
 
 describe('Register Vital Signs Service Test Suite', () => {
+  let component: VitalSignsRegistrationPage
+  let fixture: ComponentFixture<VitalSignsRegistrationPage>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [VitalSignsRegistrationPage],
+      imports: [FormsModule, RouterTestingModule]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(VitalSignsRegistrationPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('Should return updated institutionalized with collected vital signs', async () => {
     const expected = MOCK_INSTITUTIONALIZED;
     const { sut, institutionalizedRepoStub } = makeSut();
