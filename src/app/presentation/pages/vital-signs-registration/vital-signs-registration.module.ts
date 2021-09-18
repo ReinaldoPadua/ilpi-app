@@ -14,16 +14,10 @@ import { LogoffBtnComponentModule } from './../../components/logoff-btn/logoff-b
     FormsModule,
     IonicModule,
     VitalSignsRegistrationPageRoutingModule,
-    LogoffBtnComponentModule
+    LogoffBtnComponentModule,
   ],
-  declarations: [VitalSignsRegistrationPage]
+  declarations: [VitalSignsRegistrationPage],
 })
 export class VitalSignsRegistrationPageModule {
-
-  constructor(private router: Router) { }
-
-  back() {
-    this.router.navigate(['/home'])
-  }
-
+  constructor(private router: Router) {}
 }

@@ -1,6 +1,6 @@
-import { User } from "./user";
+import { User } from './user';
 
 export interface Nurse extends User {
-  name: String;
-  corenNumber: String;
+  name: string;
+  corenNumber: string;
 }

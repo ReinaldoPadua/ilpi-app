@@ -1,5 +1,7 @@
-import { Nurse } from "../models/nurse";
+import { Nurse } from '../models/nurse';
 
 export abstract class ILoginService {
-  login(username: String, password: String): Promise<Nurse> { return; };
+  login(username: string, password: string): Promise<Nurse> {
+    return;
+  }
 }
