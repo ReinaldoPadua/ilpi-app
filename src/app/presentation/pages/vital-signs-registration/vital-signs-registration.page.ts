@@ -94,7 +94,7 @@ export class VitalSignsRegistrationPage implements OnInit {
         },
       ],
     });
-    alert.present();
+    return alert.present();
   }
 
   async validationKey(keyCode) {
@@ -104,7 +104,7 @@ export class VitalSignsRegistrationPage implements OnInit {
         message: this.altMsgInvalid,
         buttons: [this.altBtnOk],
       });
-      alert.present();
+      return alert.present();
     }
   }
 }
