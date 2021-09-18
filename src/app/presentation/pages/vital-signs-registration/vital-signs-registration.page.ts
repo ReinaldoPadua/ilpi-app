@@ -19,8 +19,7 @@ import { IRegisterVitalSignsService } from 'src/app/domain/protocols/register-vi
   styleUrls: ['vital-signs-registration.page.scss'],
 })
 export class VitalSignsRegistrationPage implements OnInit {
-
-  institutionalizedId: String = '';
+  institutionalizedId = '';
 
   vitalSigns: VitalSigns = {
     saturation: 0,
@@ -33,13 +32,15 @@ export class VitalSignsRegistrationPage implements OnInit {
   constructor(
     private readonly registerService: IRegisterVitalSignsService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.institutionalizedId = this.activatedRoute.snapshot.paramMap.get('id');
     const user = sessionStorage.getItem('ilpiAppLoggedUser');
-    if (!user || user === "" || user === null) this.router.navigate(['/login']);
+    if (!user || user === '' || user === null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   register() {
