@@ -11,11 +11,10 @@ import { IRegisterVitalSignsService } from '../../protocols/register-vital-signs
 export class RegisterVitalSignsService implements IRegisterVitalSignsService {
   constructor(private readonly institutionalizedRepository: IInstitutionalizedRepository) {}
 
-  async register(vitalSigns: VitalSigns, institutionalizedId: string): Promise<Institutionalized> {
+  async register(vitalSigns: VitalSigns, institutionalizedId: String): Promise<Institutionalized> {
     const institutionalized = await this.institutionalizedRepository.findById(
       institutionalizedId.toString()
     );
-
     if (!institutionalized) {
       throw new InstitutionalizedDoesNotExist(institutionalizedId);
     }

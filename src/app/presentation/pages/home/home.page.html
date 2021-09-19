@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>
       <logoff-btn></logoff-btn>
-      Smart Vital Signs - Seleção de institucionalizado
+      <span class="logo">SVS: Smart Vital Signs</span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,6 +11,10 @@
   <loader *ngIf="isLoading"></loader>
 
   <ion-list class="institutionalized-list">
+    <ion-item>
+      <h1>Seleção de institucionalizado</h1>
+    </ion-item>
+
     <ion-item *ngFor="let in of institutionalized">
       <ion-label>({{ in.enrollment }}) {{ in.name }}</ion-label>
       <ion-button slot="end" size="default" (click)="selectInstitutionalized(in.id)">

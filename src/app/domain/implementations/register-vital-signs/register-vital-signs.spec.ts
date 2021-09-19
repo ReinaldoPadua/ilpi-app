@@ -1,4 +1,9 @@
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+
 import { IInstitutionalizedRepository } from 'src/app/infrastructure/protocols/institutionalized-repository';
+import { VitalSignsRegistrationPage } from 'src/app/presentation/pages/vital-signs-registration/vital-signs-registration.page';
 import { InstitutionalizedDoesNotExist } from '../../errors/institutionalized-does-not-exist';
 import { VitalSigns } from '../../models/vital-signs';
 import {
@@ -6,6 +11,7 @@ import {
   MOCK_INSTITUTIONALIZED,
 } from '../__mocks__/institutionalized-repository-stub';
 import { RegisterVitalSignsService } from './register-vital-signs';
+import { IRegisterVitalSignsService } from '../../../domain/protocols/register-vital-signs';
 
 interface ISutTypes {
   sut: RegisterVitalSignsService;
@@ -26,7 +32,26 @@ const makeSut = (): ISutTypes => {
   return { sut, institutionalizedRepoStub };
 };
 
-describe('Register Vital Signs Service Test Suite', () => {
+describe('Que eu possa preencher todos os sinais vitais coletados', () => {
+  let component: VitalSignsRegistrationPage;
+  let fixture: ComponentFixture<VitalSignsRegistrationPage>;
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [VitalSignsRegistrationPage],
+        imports: [FormsModule, RouterTestingModule],
+        providers: [RegisterVitalSignsService, { provide: IRegisterVitalSignsService }],
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(VitalSignsRegistrationPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('Should return updated institutionalized with collected vital signs', async () => {
     const expected = MOCK_INSTITUTIONALIZED;
     const { sut, institutionalizedRepoStub } = makeSut();
@@ -37,7 +62,7 @@ describe('Register Vital Signs Service Test Suite', () => {
     expect(response).toEqual(expected);
   });
 
-  it('Should return custom error if provided institutionalized does not exist', async () => {
+  it('Que o institucionalizado esteja cadastrado na solução', async () => {
     const { sut, institutionalizedRepoStub } = makeSut();
     spyOn(institutionalizedRepoStub, 'findById').and.returnValue(null);
     await expectAsync(sut.register(MOCK_VITAL_SIGNS, 'mock_id')).toBeRejectedWith(
