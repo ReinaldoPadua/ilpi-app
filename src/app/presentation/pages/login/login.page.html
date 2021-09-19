@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <span class="logo">SVS: Smart Vital Signs</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <loader *ngIf="isLoading"></loader>
+  <alert message="{{ error.message }}" (onClose)="closeAlert()" *ngIf="!!error"></alert>
+
+  <form class="login-forms" *ngIf="!isLoading" [formGroup]="loginData">
+    <ion-item>
+      <h1>Autenticação</h1>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nome de usuário:</ion-label>
+      <ion-input type="text" formControlName="username" name="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha:</ion-label>
+      <ion-input type="text" formControlName="password" name="password"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button slot="end" size="default" (click)="login()">
+        <ion-icon name="checkmark-outline" slot="end"></ion-icon>
+        Entrar
+      </ion-button>
+    </ion-item>
+  </form>
+
+</ion-content>

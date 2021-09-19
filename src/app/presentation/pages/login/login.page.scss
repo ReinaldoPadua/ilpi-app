@@ -1,0 +1,42 @@
+.login-forms {
+  width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.loading-wrapper {
+  width: 200px;
+  padding: 2rem;
+  border-radius: 4px;
+  background: #fafafa;
+  margin: 1rem auto;
+  box-sizing: border-box;
+
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #0e0e0e;
+  font-size: 1rem;
+}
+
+@keyframes spin {
+  100% {
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+  }
+}
+
+.fake-icon {
+  font-size: 2rem;
+  padding: 1rem;
+  animation: spin 1s linear infinite;
+  color: cadetblue;
+}
+
+.logo {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  color: cadetblue;
+}
